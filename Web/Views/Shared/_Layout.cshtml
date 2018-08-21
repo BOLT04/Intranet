@@ -1,16 +1,17 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>@ViewData["Title"]</title>
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"/>
-        <link rel="stylesheet" href="~/css/site.css"/>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="~/css/site.min.css"/>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.min.css" />
     </environment>
 </head>
 <body>
@@ -37,13 +38,13 @@
 
 @RenderBody()
 
-<div class="footer-dark fixed-bottom">
-    <footer>
-        <div class="container">
-            <p class="copyright">AzureusNation © 2018</p>
-        </div>
-    </footer>
-</div>
+
+<footer class="footer-dark fixed-bottom">
+    <div class="container">
+        <p class="copyright">AzureusNation © 2018</p>
+    </div>
+</footer>
+
 
 <environment include="Development">
     <script src="~/lib/jquery/dist/jquery.js"></script>
