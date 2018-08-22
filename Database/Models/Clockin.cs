@@ -11,7 +11,7 @@ namespace Database.Models
         [Required]
         public DateTime TimeIn { get; set; }
 
-        public DateTime TimeOut { get; set; }
+        public DateTime? TimeOut { get; set; }
 
         [Required]
         public int EmployeeId { get; set; }
