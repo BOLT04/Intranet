@@ -5,8 +5,9 @@ namespace Database.Models
 {
     public class Employee
     {
-        ICollection<Clockin> clockins = new List<Clockin>();
-        ICollection<EmployeeSite> employeeSites = new List<EmployeeSite>();
+        ICollection<Signin> _signins;
+        ICollection<EmployeeSite> _sites;
+
         [Key]
         public int Id { get; set; }
 
@@ -17,15 +18,16 @@ namespace Database.Models
         public string Surname { get; set; }
         
         [Required]
-        public virtual ICollection<EmployeeSite> EmployeesSites 
+        public virtual ICollection<EmployeeSite> Sites 
         { 
-            get{return employeeSites;} 
-            private set {employeeSites = value;} 
+            get{return _sites; } 
+            private set { _sites = value;} 
         }
-        public virtual ICollection<Clockin> Clockins 
+
+        public virtual ICollection<Signin> Signins 
         { 
-            get {return clockins;} 
-            private set {clockins = value;} 
+            get {return _signins;} 
+            private set {_signins = value;} 
         }
     }
 }

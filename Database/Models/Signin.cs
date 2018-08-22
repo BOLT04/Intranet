@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Database.Models
 {
-    public class Clockin
+    public class Signin
     {
         [Key]
         public int Id { get; set; }
@@ -16,11 +16,11 @@ namespace Database.Models
         [Required]
         public int EmployeeId { get; set; }
 
-        public Employee Employee { get; set; }
+        public virtual Employee Employee { get; set; }
 
         [Required]
         public int SiteId { get; set; }
 
-        public Site Site { get; set; }
+        public virtual Site Site { get; set; }
     }
 }

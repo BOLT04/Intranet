@@ -21,7 +21,7 @@ namespace Web.Controllers
 
         // GET: api/Clockins
         [HttpGet]
-        public IEnumerable<Clockin> GetClockins()
+        public IEnumerable<Signin> GetClockins()
         {
             return _context.Clockins;
         }
@@ -41,7 +41,7 @@ namespace Web.Controllers
 
         // PUT: api/Clockins/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutClockin([FromRoute] int id, [FromBody] Clockin clockin)
+        public async Task<IActionResult> PutClockin([FromRoute] int id, [FromBody] Signin clockin)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
@@ -65,7 +65,7 @@ namespace Web.Controllers
 
         // POST: api/Clockins
         [HttpPost]
-        public async Task<IActionResult> PostClockin([FromBody] Clockin clockin)
+        public async Task<IActionResult> PostClockin([FromBody] Signin clockin)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 

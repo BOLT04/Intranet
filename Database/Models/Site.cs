@@ -5,10 +5,10 @@ namespace Database.Models
 {
     public class Site
     {
+        ICollection<Signin> _signins;
+        ICollection<EmployeeSite> _employees;
+        ICollection<Screen> _screens;
 
-        ICollection<Clockin> clockins = new List<Clockin>();
-        ICollection<EmployeeSite> employeeSites = new List<EmployeeSite>();
-        ICollection<Screen> screens = new List<Screen>();
         [Key]
         public int Id { get; set; }
 
@@ -18,20 +18,22 @@ namespace Database.Models
         [Required]
         public string Colour { get; set; }
 
-        public virtual ICollection<Clockin> Clockins 
+        public virtual ICollection<Signin> Signins 
         { 
-            get {return clockins;} 
-            private set {clockins = value;} 
+            get {return _signins;} 
+            private set {_signins = value;} 
         }
-        public virtual ICollection<EmployeeSite> EmployeesSites 
+
+        public virtual ICollection<EmployeeSite> Employees 
         { 
-            get{return employeeSites;} 
-            private set {employeeSites = value;} 
+            get{return _employees; } 
+            private set { _employees = value;} 
         }
+
         public virtual ICollection<Screen> Screens 
         { 
-            get {return screens;}
-            private set {screens = value;} 
+            get {return _screens;}
+            private set {_screens = value;} 
         }
     }
 }

@@ -15,6 +15,6 @@ namespace Database.Models
 
         [Required]
         public int SiteId { get; set; }
-        public Site Site { get; set; }
+        public virtual Site Site { get; set; }
     }
 }

@@ -26,12 +26,11 @@ namespace Web
                 .AddJsonOptions(options =>
                 {
                     options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-                    options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
                 })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<DatabaseContext>(optionsBuilder =>
-                optionsBuilder.UseSqlServer(Configuration.GetConnectionString("Database")));
+                optionsBuilder.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("Database")));
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
