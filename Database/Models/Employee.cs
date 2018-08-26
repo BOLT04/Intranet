@@ -17,17 +17,21 @@ namespace Database.Models
         [Required]
         public string Surname { get; set; }
         
+        public string FullName {
+            get { return FirstName + " " + Surname; }
+       }
+
         [Required]
         public virtual ICollection<EmployeeSite> Sites 
         { 
-            get{return _sites; } 
-            private set { _sites = value;} 
+            get { return _sites; } 
+            private set { _sites = value; } 
         }
 
         public virtual ICollection<Signin> Signins 
         { 
-            get {return _signins;} 
-            private set {_signins = value;} 
+            get { return _signins; } 
+            private set { _signins = value; } 
         }
     }
 }

@@ -5,6 +5,11 @@ namespace Database.Models
 {
     public class Signin
     {
+        public Signin()
+        {
+            TimeIn = DateTime.Now;
+        }
+
         [Key]
         public int Id { get; set; }
 

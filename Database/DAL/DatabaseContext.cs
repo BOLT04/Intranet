@@ -7,7 +7,7 @@ namespace Database.DAL
     {
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) { }
 
-        public DbSet<Signin> Clockins { get; set; }
+        public DbSet<Signin> Signins { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Screen> Screens { get; set; }
         public DbSet<Site> Sites { get; set; }

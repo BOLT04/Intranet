@@ -1,12 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Web.Models
+namespace Web.ViewModels.ScreenViewModels
 {
-    public class NewScreenModel
+    public class NewSigninViewModel
     {
         [Required]
-        public string Name { get; set; }
-        
+        public int EmployeeId { get; set; }
+
         [Required]
         public int SiteId { get; set; }
     }

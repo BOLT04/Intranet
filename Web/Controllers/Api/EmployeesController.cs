@@ -5,6 +5,8 @@ using Database.DAL;
 using Database.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Web.ViewModels;
+using Web.ViewModels.EmployeeViewModels;
 
 namespace Web.Controllers
 {
@@ -21,9 +23,25 @@ namespace Web.Controllers
 
         // GET: api/Employees
         [HttpGet]
-        public IEnumerable<Employee> GetEmployees()
+        public IEnumerable<EmployeeViewModel> GetEmployees()
         {
-            return _context.Employees;
+            return _context.Employees.Select(e => new EmployeeViewModel
+            {
+                Id = e.Id,
+                FirstName = e.FirstName,
+                Surname = e.Surname,
+                Sites = e.Sites.Select(s => new EmployeeSiteViewModel
+                {
+                    Id = s.SiteId,
+                    Name = s.Site.Name,
+                    Colour = s.Site.Colour
+                }).ToList(),
+                Signins = e.Signins.Select(s => new EmployeeSigninViewModel
+                {
+                    Id = s.Id,
+                    SiteId = s.SiteId
+                }).ToList()
+            });
         }
 
         // GET: api/Employees/5
@@ -36,7 +54,25 @@ namespace Web.Controllers
 
             if (employee == null) return NotFound();
 
-            return Ok(employee);
+            var viewModel = new EmployeeViewModel
+            {
+                Id = employee.Id,
+                FirstName = employee.FirstName,
+                Surname = employee.Surname,
+                Sites = employee.Sites.Select(s => new EmployeeSiteViewModel
+                {
+                    Id = s.SiteId,
+                    Name = s.Site.Name,
+                    Colour = s.Site.Colour
+                }).ToList(),
+                Signins = employee.Signins.Select(s => new EmployeeSigninViewModel
+                {
+                    Id = s.Id,
+                    SiteId = s.SiteId
+                }).ToList()
+            };
+
+            return Ok(viewModel);
         }
 
         // PUT: api/Employees/5
