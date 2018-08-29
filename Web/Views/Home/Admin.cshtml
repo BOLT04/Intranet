@@ -1,0 +1,97 @@
+﻿@{
+    ViewData["Title"] = "Admin";
+}
+
+<div class="container" style="height: 100%; margin-top: 15px; margin-bottom: 59px;">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="employees-tab" data-toggle="tab" href="#employees" role="tab" aria-controls="employees" aria-selected="true">Employees</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="sites-tab" data-toggle="tab" href="#sites" role="tab" aria-controls="sites" aria-selected="false">Sites</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane show active p-2" id="employees" role="tabpanel" aria-labelledby="employees-tab" style="background-color:#fff;">
+            <h3>Employees</h3>
+            <div class="d-flex justify-content-between my-4">
+                <button id="addEmployee" type="button" class="btn btn-success">Add</button>
+            </div>
+
+            <table id="employeesTable" class="table my-4">
+                <thead>
+                    <tr>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Surname</th>
+                        <th scope="col">Sites</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane p-2" id="sites" role="tabpanel" aria-labelledby="sites-tab" style="background-color:#fff;">
+            <h3>Sites</h3>
+            <div class="d-flex justify-content-between my-4">
+                <button id="addSite" type="button" class="btn btn-success">Add</button>
+            </div>
+
+            <table id="sitesTable" class="table my-4">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Colour</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="modalBody" class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                <button id="modalSave" type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<template id="employeeTemplate">
+    <form>
+        <div class="form-group">
+            <label for="employeeFirstName">First Name</label>
+            <input type="text" class="form-control" id="employeeFirstName">
+        </div>
+        <div class="form-group">
+            <label for="employeeSurname">Surname</label>
+            <input type="text" class="form-control" id="employeeSurname">
+        </div>
+    </form>
+</template>
+<template id="siteTemplate">
+    <form>
+        <div class="form-group">
+            <label for="siteName">Name</label>
+            <input type="text" class="form-control" id="siteName">
+        </div>
+        <div class="form-group">
+            <label for="siteColour">Colour</label>
+            <input type="text" class="form-control" id="siteColour">
+        </div>
+    </form>
+</template>

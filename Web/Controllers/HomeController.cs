@@ -14,8 +14,8 @@ namespace Web.Controllers
             return View();
         }
 
-        [Route("/Screen/Register")]
-        public IActionResult ScreenRegister()
+        [Route("/Admin")]
+        public IActionResult Admin()
         {
             return View();
         }

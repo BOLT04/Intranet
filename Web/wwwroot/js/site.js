@@ -14,10 +14,33 @@
             registerClicked();
         }
     });
+
+    $.ajax({
+        method: 'GET',
+        url: 'api/employees',
+        success: function (employees) {
+            employees.forEach(function (employee) {
+                $('#employeesTable').append('<tr><td>' + employee.firstName + '</td><td>' + employee.surname + '</td><td></td><td><button type="button" class="btn btn-primary">Edit</button><button type="button" class="btn btn-danger">Delete</button></td></tr>');
+            });
+        }
+    });
+
+    $.ajax({
+        method: 'GET',
+        url: 'api/sites',
+        success: function (sites) {
+            sites.forEach(function (site) {
+                $('#sitesTable').append('<tr><td>' + site.name + '</td><td>' + site.colour + '</td><td><button type="button" class="btn btn-primary">Edit</button><button type="button" class="btn btn-danger">Delete</button></td></tr>');
+            });
+        }
+    });
 });
 
 function registerClicked() {
     $('.personCard').on('click', personClicked);
+    $('#addEmployee').on('click', addEmployee);
+    $('#addSite').on('click', addSite);
+    $('#modal').on('hidden.bs.modal', resetModal)
 }
 
 function personClicked() {
@@ -67,7 +90,6 @@ function personClicked() {
 }
 
 function personSignIn() {
-    person = this;
     personId = $('#modalBody').attr('data-id');
     $.ajax({
         method: 'POST',
@@ -85,7 +107,6 @@ function personSignIn() {
 }
 
 function personSignOut() {
-    person = this;
     personId = $('#modalBody').attr('data-id');
     signinId = $('#signOut').attr('data-id');
 
@@ -116,4 +137,41 @@ function personSignOut() {
             }
         }
     });
+}
+
+function resetModal() {
+    $('#modal-title').html(null);
+    $('#modalBody').html(null);
+}
+
+function addEmployee() {
+    $('#modal-title').html("Add Employee");
+    $('#modalBody').html($('#employeeTemplate').clone().contents());
+    $('#modal').modal('toggle');
+}
+
+function editEmployee() {
+    // Get Employee data
+    $('#modal-title').html("Edit Employee");
+    $('#modalBody').html($('#employeeTemplate').clone().contents());
+}
+
+function addSite() {
+    $('#modal-title').html("Add Site");
+    $('#modalBody').html($('#siteTemplate').clone().contents());
+    $('#modal').modal('toggle');
+}
+
+function editSite() {
+    // Get Site data
+    $('#modal-title').html("Edit Site");
+    $('#modalBody').html($('#siteTemplate').clone().contents());
+}
+
+function saveEmployee() {
+
+}
+
+function saveSite() {
+
 }
