@@ -5,9 +5,6 @@ namespace Database.Models
 {
     public class Employee
     {
-        ICollection<Signin> _signins;
-        ICollection<EmployeeSite> _sites;
-
         [Key]
         public int Id { get; set; }
 
@@ -17,21 +14,11 @@ namespace Database.Models
         [Required]
         public string Surname { get; set; }
         
-        public string FullName {
-            get { return FirstName + " " + Surname; }
-       }
+        public string FullName => FirstName + " " + Surname;
 
         [Required]
-        public virtual ICollection<EmployeeSite> Sites 
-        { 
-            get { return _sites; } 
-            private set { _sites = value; } 
-        }
+        public virtual ICollection<EmployeeSite> Sites { get; private set; }
 
-        public virtual ICollection<Signin> Signins 
-        { 
-            get { return _signins; } 
-            private set { _signins = value; } 
-        }
+        public virtual ICollection<Signin> Signins { get; private set; }
     }
 }

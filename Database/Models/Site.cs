@@ -5,10 +5,6 @@ namespace Database.Models
 {
     public class Site
     {
-        ICollection<Signin> _signins;
-        ICollection<EmployeeSite> _employees;
-        ICollection<Screen> _screens;
-
         [Key]
         public int Id { get; set; }
 
@@ -18,22 +14,10 @@ namespace Database.Models
         [Required]
         public string Colour { get; set; }
 
-        public virtual ICollection<Signin> Signins 
-        { 
-            get {return _signins;} 
-            private set {_signins = value;} 
-        }
+        public virtual ICollection<Signin> Signins { get; private set; }
 
-        public virtual ICollection<EmployeeSite> Employees 
-        { 
-            get{return _employees; } 
-            private set { _employees = value;} 
-        }
+        public virtual ICollection<EmployeeSite> Employees { get; private set; }
 
-        public virtual ICollection<Screen> Screens 
-        { 
-            get {return _screens;}
-            private set {_screens = value;} 
-        }
+        public virtual ICollection<Screen> Screens { get; private set; }
     }
 }
